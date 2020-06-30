@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/regFragment"
+        android:name="com.dev.roomsocialmedia.ui.register.RegFragment"
+        android:label="fragment_reg"
+        tools:layout="@layout/fragment_reg" >
+        <action
+            android:id="@+id/action_regFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.dev.roomsocialmedia.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_regFragment"
+            app:destination="@id/regFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgot_passwordFragment"
+            app:destination="@id/forgot_passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.dev.roomsocialmedia.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard2"
+        tools:layout="@layout/fragment_dashboard2" />
+    <fragment
+        android:id="@+id/forgot_passwordFragment"
+        android:name="com.dev.roomsocialmedia.ui.forgotpassword.Forgot_passwordFragment"
+        android:label="forgotpassword"
+        tools:layout="@layout/fragment_forgot_password"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.dev.roomsocialmedia.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        />
+</navigation>

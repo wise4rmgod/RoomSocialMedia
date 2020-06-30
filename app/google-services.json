@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "606496626221",
+    "firebase_url": "https://roomsocialmedia-c5a14.firebaseio.com",
+    "project_id": "roomsocialmedia-c5a14",
+    "storage_bucket": "roomsocialmedia-c5a14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606496626221:android:7178db16f38bd6c4b50aa4",
+        "android_client_info": {
+          "package_name": "com.dev.roomsocialmedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606496626221-6j7o1i5mq2ffonshq3i1ffialir9kvg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSSs171SPl4_rwsMJgmRnFhc-ofQ08dwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606496626221-6j7o1i5mq2ffonshq3i1ffialir9kvg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
