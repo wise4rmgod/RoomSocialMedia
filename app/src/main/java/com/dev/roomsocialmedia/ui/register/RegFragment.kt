@@ -6,14 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.dev.roomsocialmedia.R
 import com.dev.roomsocialmedia.databinding.FragmentRegBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_reg.*
-import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
@@ -36,10 +33,9 @@ class RegFragment : Fragment() {
             else Toast.makeText(activity, "not success", Toast.LENGTH_SHORT).show()
         })
 
-
-        /** regViewModel.firstTodo.observe(viewLifecycleOwner, Observer {
-        it
-        })  **/
+        regViewModel.firstTodo.observe(viewLifecycleOwner, Observer {
+            it
+        })
 
 
         return regBinding.root

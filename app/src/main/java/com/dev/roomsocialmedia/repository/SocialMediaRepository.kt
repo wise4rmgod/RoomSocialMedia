@@ -19,6 +19,11 @@ class SocialMediaRepository @Inject constructor(appDatabase: AppDatabase) {
         socialMediaDAO.login(email, password)
     }
 
+
+    fun returnemail(email: String?) {
+        socialMediaDAO.returnemailonly(email)
+    }
+
     fun getpost() = socialMediaDAO.showallpost()
 
     fun getreglist() = socialMediaDAO.showallusers()

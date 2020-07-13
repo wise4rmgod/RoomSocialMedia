@@ -14,20 +14,22 @@ class RegViewModel @ViewModelInject constructor(
 ) :
     ViewModel() {
     // var socialModel = MutableLiveData()
-    var socialModel: SocialModel? = null
-    val test = MutableLiveData(socialModel)
+    var socialModel: MutableLiveData<SocialModel> = MutableLiveData()
     val status: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
-        test.value = SocialModel()
+        socialModel.value = SocialModel()
     }
 
     fun register() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                if (test.value?.email == null) {
-                    socialMediaRepository.reg(socialModel)
-                    status.postValue(true)
+                if (socialModel.value?.email != null) {
+                    socialModel.value?.let {
+                        socialMediaRepository.reg(it)
+                        status.postValue(true)
+                    }
+
                 } else {
                     status.postValue(false)
                 }
@@ -36,6 +38,18 @@ class RegViewModel @ViewModelInject constructor(
             }
 
         }
+    }
+
+    fun emailreturn(): Boolean {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                socialModel.value.let {
+                    socialMediaRepository.returnemail(it?.email)
+                }
+            }
+        }
+
+        return true
     }
 
     val firstTodo: LiveData<List<SocialModel>> = liveData(Dispatchers.Main) {

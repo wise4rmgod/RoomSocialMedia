@@ -28,6 +28,9 @@ interface SocialMediaDAO {
     @Query("SELECT * FROM socialmedia WHERE email = :lemail AND password = :lpassword")
     fun login(lemail: String?, lpassword: String?): SocialModel
 
+    @Query("SELECT * FROM socialmedia Where email LIKE :remail")
+    fun returnemailonly(remail: String?): SocialModel
+
     @Update
     fun update_profile(socialModel: SocialModel)
 

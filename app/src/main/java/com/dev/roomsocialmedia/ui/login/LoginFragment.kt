@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.dev.roomsocialmedia.R
 import com.dev.roomsocialmedia.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 @AndroidEntryPoint
@@ -31,6 +32,10 @@ class LoginFragment : Fragment() {
         loginBinding.lifecycleOwner = this
         loginBinding.login = loginViewModel
 
+        loginBinding.noAccount.setOnClickListener {
+
+        }
+
         // check the status of post request
         loginViewModel.status.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -41,11 +46,11 @@ class LoginFragment : Fragment() {
         })
 
 
-      /**  loginBinding.loginbtn.setOnClickListener {
+        /**  loginBinding.loginbtn.setOnClickListener {
 
-            loginViewModel.login()
-            //  val action = LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
-            // findNavController().navigate(action)
+        loginViewModel.login()
+        //  val action = LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
+        // findNavController().navigate(action)
         } **/
 
         loginBinding.gotoReg.setOnClickListener {

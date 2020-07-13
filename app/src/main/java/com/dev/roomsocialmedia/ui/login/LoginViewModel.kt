@@ -14,15 +14,21 @@ import kotlinx.coroutines.withContext
 class LoginViewModel @ViewModelInject constructor(private val socialMediaRepository: SocialMediaRepository) :
     ViewModel() {
 
-    val socialModel = SocialModel()
+    var socialModel: MutableLiveData<SocialModel> = MutableLiveData()
     val status = MutableLiveData<Boolean>()
+
+    init {
+        socialModel.value = SocialModel()
+    }
+
+
     fun login() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                socialMediaRepository.login(socialModel.email, socialModel.password)
-                if (socialModel.email != null) {
+                socialModel.value.let {
+                    socialMediaRepository.login(it?.email, it?.password)
                     status.postValue(true)
-                } else status.postValue(false)
+                }
 
             }
         }
