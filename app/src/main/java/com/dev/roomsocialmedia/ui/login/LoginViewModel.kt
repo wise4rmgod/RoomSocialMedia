@@ -15,23 +15,41 @@ class LoginViewModel @ViewModelInject constructor(private val socialMediaReposit
     ViewModel() {
 
     var socialModel: MutableLiveData<SocialModel> = MutableLiveData()
-    val status = MutableLiveData<Boolean>()
+    val status = MutableLiveData<String>()
 
     init {
         socialModel.value = SocialModel()
     }
 
-
     fun login() {
         viewModelScope.launch {
+            val ty = checkfornullable()
             withContext(Dispatchers.IO) {
                 socialModel.value.let {
-                    socialMediaRepository.login(it?.email, it?.password)
-                    status.postValue(true)
-                }
 
+                    val socialmodelg = socialMediaRepository.login(it?.email, it?.password)
+
+                    if (!socialModel.value?.email.isNullOrEmpty() && !socialModel.value?.password.isNullOrEmpty()) {
+                        if (socialmodelg != null) {
+                            status.postValue("true")
+                        } else {
+                            status.postValue("false")
+                        }
+
+                    } else {
+                        status.postValue("p")
+                    }
+                }
             }
         }
     }
+
+    fun checkfornullable(): Boolean? {
+
+        return socialModel.value?.email?.isNotBlank()
+        // socialModel.value?.password?.isNotEmpty()
+    }
+
+
 }
 

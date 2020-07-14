@@ -24,17 +24,19 @@ class RegViewModel @ViewModelInject constructor(
     fun register() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
+
                 if (socialModel.value?.email != null) {
                     socialModel.value?.let {
-                        socialMediaRepository.reg(it)
+                        val returnemail = socialMediaRepository.returnemail(it.email)
+                        if (socialModel.value?.email != it.email)
+                            socialMediaRepository.reg(it)
                         status.postValue(true)
                     }
 
                 } else {
                     status.postValue(false)
                 }
-                // socialModel.value.let {  socialMediaRepository.reg(socialModel)}
-                //  socialMediaRepository.reg(socialModel.value!!)
+
             }
 
         }

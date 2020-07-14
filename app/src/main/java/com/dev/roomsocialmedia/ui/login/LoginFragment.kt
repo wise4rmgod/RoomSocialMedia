@@ -39,9 +39,9 @@ class LoginFragment : Fragment() {
         // check the status of post request
         loginViewModel.status.observe(viewLifecycleOwner, Observer {
             when (it) {
-                true -> Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show()
-                false -> Toast.makeText(activity, "not success", Toast.LENGTH_SHORT).show()
-                else -> Toast.makeText(activity, "not available", Toast.LENGTH_SHORT).show()
+                "true" -> Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show()
+                "false" -> Toast.makeText(activity, "not success", Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(activity, "please fill up emytp ", Toast.LENGTH_SHORT).show()
             }
         })
 
